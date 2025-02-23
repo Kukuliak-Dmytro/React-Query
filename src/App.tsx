@@ -22,7 +22,7 @@ function App() {
         {" | "}
         <Link to='/vite-react-router-template/contact' >Contact</Link>
         {" |" }
-        <Link to='/vite-react-router-template/contact' >Posts</Link>
+        <Link to='/vite-react-router-template/posts' >Posts</Link>
 
       </nav>
      <Outlet></Outlet>
