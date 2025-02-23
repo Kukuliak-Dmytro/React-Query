@@ -1,28 +1,37 @@
-interface PaginationProps{
-    currentPage:number;
-    totalItems:number;
-    itemsPerPage:number;
-    onPageChange:(newPage:number)=>void
-}
 import Button from "../../common/Button/Button";
-export default function Pagination({currentPage, totalItems, itemsPerPage, onPageChange}:PaginationProps){
-    const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-    const goToPreviousPage = () => {
-        if (currentPage > 1) {
-            onPageChange(currentPage - 1);
-        }
-    };
+interface PaginationProps {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (newPage: number) => void;
+  goToPreviousPage?: () => void;
+  goToNextPage?: () => void;
+}
 
-    const goToNextPage = () => {
-        if (currentPage < totalPages) {
-            onPageChange(currentPage + 1);
-        }
-    };
-    return(
-        <div className="pagination-wrapper">
-            <Button disabled={currentPage===1? true :false} onClick={goToPreviousPage}>Previous</Button>
-            <Button disabled={currentPage===totalPages? true :false} onClick={goToNextPage}>Next</Button>
-        </div>
-    )
+export default function Pagination({
+  currentPage,
+  totalPages,
+  onPageChange,
+  goToPreviousPage,
+  goToNextPage,
+}: PaginationProps) {
+  return (
+    <div className="pagination-wrapper">
+      <Button
+        disabled={currentPage === 1}
+        onClick={goToPreviousPage || (() => onPageChange(currentPage - 1))}
+      >
+        Previous
+      </Button>
+      <span>
+        Page {currentPage} of {totalPages}
+      </span>
+      <Button
+        disabled={currentPage === totalPages}
+        onClick={goToNextPage || (() => onPageChange(currentPage + 1))}
+      >
+        Next
+      </Button>
+    </div>
+  );
 }

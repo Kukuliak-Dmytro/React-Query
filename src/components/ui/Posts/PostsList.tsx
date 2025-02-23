@@ -1,4 +1,4 @@
-import { PostType, PostsListType } from "../../../types/Posts";
+import {  PostsListType } from "../../../types/Posts";
 import Post from "./Post";
 export default function PostsLists({ posts }: { posts: PostsListType }) {
     
