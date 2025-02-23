@@ -9,10 +9,10 @@ function App() {
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
+        <a href="https://vitejs.dev" target="_blank" rel='noopener'>
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
-        <a href="https://react.dev" target="_blank">
+        <a href="https://react.dev" target="_blank" rel='noopener'>
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
@@ -21,11 +21,12 @@ function App() {
         <Link to='/vite-react-router-template/' >Home</Link>
         {" | "}
         <Link to='/vite-react-router-template/contact' >Contact</Link>
+        {" |" }
+        <Link to='/vite-react-router-template/contact' >Posts</Link>
 
       </nav>
      <Outlet></Outlet>
-        Click on the Vite and React logos to learn more
-    
+  
     </>
   )
 }
