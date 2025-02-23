@@ -18,11 +18,11 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <nav>
-        <Link to='/vite-react-router-template/' >Home</Link>
+        <Link to='/React-Query/' >Home</Link>
         {" | "}
-        <Link to='/vite-react-router-template/contact' >Contact</Link>
+        <Link to='/React-Query/contact' >Contact</Link>
         {" |" }
-        <Link to='/vite-react-router-template/posts' >Posts</Link>
+        <Link to='/React-Query/posts' >Posts</Link>
 
       </nav>
      <Outlet></Outlet>

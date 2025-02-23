@@ -10,19 +10,19 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
-    path: "/vite-react-router-template/",
+    path: "/React-Query/",
     element: <App />,
     children: [
       {
-        path: "/vite-react-router-template/",
+        path: "/React-Query/",
         element: <Home />,
       },
       {
-        path: "/vite-react-router-template/contact",
+        path: "/React-Query/contact",
         element: <Contact />,
       },
       {
-        path: "/vite-react-router-template/posts",
+        path: "/React-Query/posts",
         element: <Posts />
       }
 
