@@ -1,6 +1,6 @@
 import { useFetchPaginated } from "../hooks/useFetchPaginated";
 import fetchPosts from "../services/fetchPosts";
-import PostsLists from "../components/ui/Posts/PostsList";
+import PostsLists from "../components/ui/Posts/PostList/PostsList";
 import Pagination from "../components/layout/Pagination/Pagination";
 
 export function Posts() {

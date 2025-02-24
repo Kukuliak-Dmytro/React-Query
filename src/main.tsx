@@ -7,6 +7,7 @@ import { Home } from "./pages/Home.tsx";
 import { Contact } from "./pages/Contact.tsx";
 import { Posts } from './pages/Posts.tsx';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import PostPage from './pages/PostPage.tsx';
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
@@ -23,7 +24,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/React-Query/posts",
-        element: <Posts />
+        element: <Posts />,
+      },
+      {
+        path:"/React-Query/posts/post",
+        element:<PostPage/>
       }
 
     ],

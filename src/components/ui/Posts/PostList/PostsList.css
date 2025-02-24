@@ -1,0 +1,4 @@
+.posts-lists-wrapper{
+    display: grid;
+    gap: 16px;
+}

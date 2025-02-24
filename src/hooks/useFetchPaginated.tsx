@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 
 
 export const useFetchPaginated = <T,>(fetchData: () => Promise<T[]>, queryKeys:string[]) => {
-    const { isFetching, data: posts, error } = useQuery({
+    const { isFetching, data, error } = useQuery({
         queryKey: queryKeys,
         queryFn: fetchData,
     
@@ -15,14 +15,14 @@ export const useFetchPaginated = <T,>(fetchData: () => Promise<T[]>, queryKeys:s
     const [currentItems, setCurrentItems] = useState<T[]>([]);
 
     useEffect(() => {
-        if (posts) {
+        if (data) {
             const indexOfLastItem = currentPage * itemsPerPage;
-            const newCurrentItems = posts.slice((currentPage - 1) * itemsPerPage, indexOfLastItem);
+            const newCurrentItems = data.slice((currentPage - 1) * itemsPerPage, indexOfLastItem);
             setCurrentItems(newCurrentItems);
         }
-    }, [posts, currentPage]);
+    }, [data,currentPage]);
 
-    const totalPages = posts ? Math.ceil(posts.length / itemsPerPage) : 0;
+    const totalPages = data? Math.ceil(data.length / itemsPerPage) : 0;
 
     const goToPreviousPage = () => {
         if (currentPage > 1) {
@@ -38,7 +38,7 @@ export const useFetchPaginated = <T,>(fetchData: () => Promise<T[]>, queryKeys:s
 
     return {
         isFetching,
-        posts,
+        data,
         currentItems,
         currentPage,
         totalPages,
