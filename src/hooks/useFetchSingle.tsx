@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 
-export default function useFetchSingle <T,>(queryKeys:string[], fetchData:()=>Promise<T[]>){
+export default function useFetchSingle<T>(fetchData: ({ queryKey }: { queryKey: string[] }) => Promise<T>, queryKeys: string[]) {
     const { isFetching, data, error } = useQuery({
         queryKey: queryKeys,
-        queryFn: fetchData,        
+        queryFn: fetchData,
+        
     });
-    return {isFetching,data,error}
+    return { isFetching, data, error };
 }
