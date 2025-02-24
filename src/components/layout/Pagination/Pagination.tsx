@@ -3,7 +3,6 @@ import Button from "../../common/Button/Button";
 interface PaginationProps {
   currentPage: number;
   totalPages: number;
-  onPageChange: (newPage: number) => void;
   goToPreviousPage?: () => void;
   goToNextPage?: () => void;
 }
@@ -11,7 +10,6 @@ interface PaginationProps {
 export default function Pagination({
   currentPage,
   totalPages,
-  onPageChange,
   goToPreviousPage,
   goToNextPage,
 }: PaginationProps) {
@@ -19,7 +17,7 @@ export default function Pagination({
     <div className="pagination-wrapper">
       <Button
         disabled={currentPage === 1}
-        onClick={goToPreviousPage || (() => onPageChange(currentPage - 1))}
+        onClick={goToPreviousPage}
       >
         Previous
       </Button>
@@ -28,7 +26,7 @@ export default function Pagination({
       </span>
       <Button
         disabled={currentPage === totalPages}
-        onClick={goToNextPage || (() => onPageChange(currentPage + 1))}
+        onClick={goToNextPage }
       >
         Next
       </Button>

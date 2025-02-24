@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 
-export const useFetchPaginated = <T,>(fetchData: () => Promise<T[]>) => {
+export const useFetchPaginated = <T,>(fetchData: () => Promise<T[]>, queryKeys:string[]) => {
     const { isFetching, data: posts, error } = useQuery({
-        queryKey: ["posts"],
+        queryKey: queryKeys,
         queryFn: fetchData,
     
         
