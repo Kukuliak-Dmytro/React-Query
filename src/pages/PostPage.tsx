@@ -11,6 +11,9 @@ export default function PostPage() {
     if (isFetchingPost) {
         return <h1>Loading...</h1>;
     }
+    if (postError) {
+        return <h1>{postError.message}</h1>;
+    }
 
     return (
         <>
@@ -18,9 +21,12 @@ export default function PostPage() {
             {postData?.body}, {postData?.id}, {postData?.title}, {postData?.userId}
             <div>
                 <h2>Comments</h2>
+                
                 {isFetchingComments ? (
                     <p>Loading comments...</p>
-                ) : (  
+                ) : commentsError ? (
+                    <p>Error loading comments: {commentsError.message}</p>
+                ) : (
                     commentsData?.map((comment: any) => (
                         <div key={comment.id}>
                             <p>{comment.body}</p>
