@@ -14,7 +14,7 @@ interface EditPostModalProps {
 export default function EditPostModal({ formData, handleChange, onClose }: EditPostModalProps) {
     const editPostMutation = useMutation({
         mutationFn: editPost,
-        onSuccess: (data, variables, context) => {
+        onSuccess: (variables) => {
             console.log("Post edited successfully: ", variables);
             onClose(); // Close the modal on success
         },
