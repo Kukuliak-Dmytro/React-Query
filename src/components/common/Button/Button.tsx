@@ -10,7 +10,7 @@ interface ButtonProps {
 
 export default function Button({ children, onClick, disabled, loading, type='button' }: ButtonProps) {
     return (
-        <button onClick={onClick} disabled={disabled}>
+        <button onClick={onClick} disabled={disabled} type={type}>
             {loading ? 'Loading...' : children}
         </button>
     );

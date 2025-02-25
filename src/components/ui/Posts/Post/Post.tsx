@@ -1,18 +1,27 @@
-import { PostType } from "../../../../types/Posts";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import './Post.css';
+import { PostType } from "../../../../types/Posts";
+import useFormState from "../../../../hooks/useFormState";
+import { usePrefetch } from "../../../../hooks/usePrefetch";
+import { deletePost, fetchPost, fetchPostComments } from "../../../../services/postsFetches";
 import Button from "../../../common/Button/Button";
 import Modal from "../../../common/Modal/Modal";
 import EditPostModal from "../../../common/Modal/EditPostModal";
-import { useState } from "react";
-import useFormState from "../../../../hooks/useFormState";
-import {fetchPost, fetchPostComments} from "../../../../services/fetchPost";
-import { usePrefetch } from "../../../../hooks/usePrefetch";
+import { useMutation } from "@tanstack/react-query";
+import './Post.css';
 export default function Post({ post }: { post: PostType }) {
     const [modal, setModal] = useState(false);
     const [modalData, handleModalData] = useFormState<PostType>({ ...post });
     const prefetchPost=usePrefetch(fetchPost)
     const prefetchComments=usePrefetch(fetchPostComments)
+    const DeletePost=useMutation({
+        mutationFn:deletePost,
+        onSuccess:()=>{
+             // note: json palceholder api does not return a copy of deleted object
+            console.log("Delete successfull")
+        }
+    })
+
 
     return (
         <>
@@ -29,7 +38,8 @@ export default function Post({ post }: { post: PostType }) {
                     </Link>
                     <span style={{ display: "flex", gap: "8px" }}>
                         <Button onClick={() => setModal(true)}>Edit</Button>
-                        <Button>Delete</Button>
+                        <Button onClick={()=>{DeletePost.mutate({queryKey:['posts',post.id.toString, 'delete']})
+                        }}>Delete</Button>
                     </span>
                 </span>
                 <p>{post.body}</p>

@@ -3,7 +3,7 @@ import Button from "../Button/Button";
 import './Modal.css';
 import { PostType } from "../../../types/Posts";
 import { useMutation } from "@tanstack/react-query";
-import { editPost } from "../../../services/fetchPost";
+import { editPost } from "../../../services/postsFetches";
 
 interface EditPostModalProps {
     formData: PostType;
@@ -15,10 +15,10 @@ export default function EditPostModal({ formData, handleChange, onClose }: EditP
     const editPostMutation = useMutation({
         mutationFn: editPost,
         onSuccess: (data, variables, context) => {
-            console.log("Post edited successfully");
+            console.log("Post edited successfully: ", variables);
             onClose(); // Close the modal on success
         },
-    });
+});
 
     const sendPutRequest = () => {
         editPostMutation.mutate({ post: formData });

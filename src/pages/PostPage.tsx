@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import useFetchSingle from "../hooks/useFetchSingle";
-import { fetchPost, fetchPostComments } from "../services/fetchPost";
+import { fetchPost, fetchPostComments } from "../services/postsFetches";
 export default function PostPage() {
    
 
