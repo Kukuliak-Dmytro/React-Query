@@ -5,9 +5,10 @@ interface ButtonProps {
     onClick?: () => void;
     disabled?: boolean;
     loading?: boolean;
+    type?:'submit'|'button'
 }
 
-export default function Button({ children, onClick, disabled, loading }: ButtonProps) {
+export default function Button({ children, onClick, disabled, loading, type='button' }: ButtonProps) {
     return (
         <button onClick={onClick} disabled={disabled}>
             {loading ? 'Loading...' : children}

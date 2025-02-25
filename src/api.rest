@@ -1,0 +1,22 @@
+### Test GET request
+GET https://jsonplaceholder.typicode.com/posts
+Accept: application/json
+
+### Test POST request
+POST https://jsonplaceholder.typicode.com/posts
+Content-Type: application/json
+
+{
+    "key": "value"
+}
+
+### Test PUT request
+PUT https://jsonplaceholder.typicode.com/posts/1
+Content-Type: application/json
+
+{
+    "key": "updatedValue"
+}
+
+### Test DELETE request
+DELETE https://jsonplaceholder.typicode.com/posts/1

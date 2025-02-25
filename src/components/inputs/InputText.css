@@ -1,0 +1,26 @@
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.input-text {
+    min-width: 400px;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.input-text:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* Additional styles for textarea */
+.input-text.textarea {
+    height: 150px; /* Adjust the height as needed */
+    resize: vertical; /* Allow vertical resizing */
+}
