@@ -10,6 +10,7 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import PostPage from './pages/PostPage.tsx'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 const queryClient = new QueryClient();
+
 const router = createBrowserRouter([
   {
     path: "/React-Query/",

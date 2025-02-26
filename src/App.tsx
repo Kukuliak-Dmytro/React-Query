@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-
+import { usePrefetch } from './hooks/usePrefetch.ts';
+import fetchPosts from './services/postsFetches.ts';
 function App() {
+  const prefetchPosts=usePrefetch(fetchPosts)
 
   return (
     <>
@@ -22,7 +24,7 @@ function App() {
         {" | "}
         <Link to='/React-Query/contact' >Contact</Link>
         {" |" }
-        <Link to='/React-Query/posts' >Posts</Link>
+        <Link to='/React-Query/posts'  onMouseEnter={()=>prefetchPosts(['posts'])}>Posts</Link>
 
       </nav>
      <Outlet></Outlet>

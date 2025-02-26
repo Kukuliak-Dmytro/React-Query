@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 
 
 export const useFetchPaginated = <T,>(fetchData: () => Promise<T[]>, queryKeys:string[]) => {
-    const { isFetching, data, error } = useQuery({
+    const { isFetching, isLoading, data, error } = useQuery({
         queryKey: queryKeys,
         queryFn: fetchData,
     
@@ -38,6 +38,7 @@ export const useFetchPaginated = <T,>(fetchData: () => Promise<T[]>, queryKeys:s
 
     return {
         isFetching,
+        isLoading,
         data,
         currentItems,
         currentPage,

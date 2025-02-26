@@ -4,9 +4,9 @@ import PostsLists from "../components/ui/Posts/PostList/PostsList";
 import Pagination from "../components/layout/Pagination/Pagination";
 
 export function Posts() {
-    const { isFetching, currentItems, currentPage, totalPages, goToPreviousPage, goToNextPage, error } = useFetchPaginated(fetchPosts,['posts']);
+    const { isLoading, currentItems, currentPage, totalPages, goToPreviousPage, goToNextPage, error } = useFetchPaginated(fetchPosts,['posts']);
 
-    if (isFetching) {
+    if (isLoading) {
         return <div>Loading...</div>;
     }
 
