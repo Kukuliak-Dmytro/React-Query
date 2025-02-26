@@ -5,8 +5,10 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { usePrefetch } from './hooks/usePrefetch.ts';
 import fetchPosts from './services/postsFetches.ts';
+import fetchAlbums from './services/albumsFetches.ts'
 function App() {
   const prefetchPosts=usePrefetch(fetchPosts)
+  const prefetchAlbums=usePrefetch(fetchAlbums)
 
   return (
     <>
@@ -24,7 +26,7 @@ function App() {
         {" | "}
         <Link to='/React-Query/posts'  onMouseEnter={()=>prefetchPosts(['posts'])}>Posts</Link>
         {" |" }
-        <Link to='/React-Query/albums' >Albums</Link>
+        <Link to='/React-Query/albums' onMouseEnter={(()=>prefetchAlbums(['albums']))}>Albums</Link>
 
       </nav>
      <Outlet></Outlet>

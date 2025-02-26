@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import useFetchSingle from "../hooks/useFetchSingle";
 import { fetchPost, fetchPostComments } from "../services/postsFetches";
+import { CommentType } from "../types/Posts";
 export default function PostPage() {
    
 
@@ -28,7 +29,7 @@ export default function PostPage() {
                 ) : commentsError ? (
                     <p>Error loading comments: {commentsError.message}</p>
                 ) : (
-                    commentsData?.map((comment: any) => (
+                    commentsData?.map((comment: CommentType) => (
                         <div key={comment.id}>
                             <p>{comment.body}</p>
                             <p>By User {comment.email}</p>

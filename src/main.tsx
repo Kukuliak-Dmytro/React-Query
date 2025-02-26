@@ -9,6 +9,7 @@ import { Posts } from './pages/Posts.tsx';
 import { Albums } from './pages/Albums.tsx';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import PostPage from './pages/PostPage.tsx'
+import AlbumPage from './pages/AlbumPage.tsx';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 const queryClient = new QueryClient();
 
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path:'/React-Query/albums',
         element:<Albums/>
+      },
+      {
+        path:'/React-Query/albums/:id',
+        element:<AlbumPage/>
       }
 
     ],

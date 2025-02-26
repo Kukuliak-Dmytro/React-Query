@@ -6,6 +6,7 @@ export type PostType = {
 }
 export type PostsListType = PostType[]
 export type CommentType={
+    id:number;
     postId:number;
     name:string;
     email:string
