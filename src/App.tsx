@@ -22,9 +22,9 @@ function App() {
       <nav>
         <Link to='/React-Query/' >Home</Link>
         {" | "}
-        <Link to='/React-Query/contact' >Contact</Link>
-        {" |" }
         <Link to='/React-Query/posts'  onMouseEnter={()=>prefetchPosts(['posts'])}>Posts</Link>
+        {" |" }
+        <Link to='/React-Query/albums' >Albums</Link>
 
       </nav>
      <Outlet></Outlet>

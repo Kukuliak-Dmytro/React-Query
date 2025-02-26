@@ -1,10 +1,10 @@
 import { useFetchPaginated } from "../hooks/useFetchPaginated";
-import fetchPosts from "../services/postsFetches";
-import PostsLists from "../components/ui/Posts/PostsList";
+import fetchAlbums from "../services/albumsFetches";
+import AlbumsLists from "../components/ui/Albums/AlbumsList";
 import Pagination from "../components/layout/Pagination/Pagination";
 
-export function Posts() {
-    const { isLoading, currentItems, currentPage, totalPages, goToPreviousPage, goToNextPage, error } = useFetchPaginated(fetchPosts,['posts']);
+export function Albums() {
+    const { isLoading, currentItems, currentPage, totalPages, goToPreviousPage, goToNextPage, error } = useFetchPaginated(fetchAlbums,['albums']);
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -16,7 +16,7 @@ export function Posts() {
 
     return (
         <>
-            <PostsLists posts={currentItems} />
+            <AlbumsLists albums={currentItems} />
             <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}

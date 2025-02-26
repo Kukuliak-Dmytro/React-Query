@@ -1,10 +1,8 @@
-import { PostsListType } from "../../../../types/Posts";
-import Post from "../Post/Post";
-import './PostsList.css';
-
+import { PostsListType } from "../../../types/Posts";
+import Post from "./PostCard";
 export default function PostsLists({ posts }: { posts: PostsListType }) {
     return (
-        <div className="posts-lists-wrapper">
+        <div style={{ display: 'grid', gap: '16px' }}>
             {posts.map(post => (
                 <Post key={post.id} post={post} />
             ))}
