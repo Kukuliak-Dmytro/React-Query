@@ -1,11 +1,11 @@
-import { useIsFetching } from "@tanstack/react-query";
+import { useIsMutating } from "@tanstack/react-query";
 import "./OverlaySpenner.css"; 
 
 
 export function LoadingOverlay() {
-    const isFetching = useIsFetching() 
+    const isMutating =useIsMutating() 
 
-    if (!isFetching) return null; 
+    if (!isMutating) return null; 
 
     return (
         <div className="loading-overlay">

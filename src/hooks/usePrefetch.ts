@@ -8,7 +8,7 @@ export const usePrefetch = <T>(fetchData: ({ queryKey }: { queryKey: QueryKey })
         await queryClient.prefetchQuery({            
             queryKey,
             queryFn: () => fetchData({ queryKey }),
-        
+            staleTime:Infinity
             
         }
        
