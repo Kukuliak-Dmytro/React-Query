@@ -1,17 +1,15 @@
-// import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AlbumType } from "../../../types/Albums";
-// import useFormState from "../../../hooks/useFormState";
+import useFormState from "../../../hooks/useFormState";
 import { usePrefetch } from "../../../hooks/usePrefetch";
 import { deleteAlbum, fetchAlbum, fetchAlbumPhotos } from "../../../services/albumsFetches";
 import Button from "../../common/Button/Button";
-// import Modal from "../../common/Modal/Modal";
-// import EditAlbumModal from "../../common/Modal/EditAlbumModal";
+import EditAlbumModal from "../../common/Modal/EditAlbumModal";
 import { useMutation } from "@tanstack/react-query";
-
+import { useModal } from "../../../hooks/useModal";
 export default function AlbumCard({ album }: { album: AlbumType }) {
-    // const [modal, setModal] = useState(false);
-    // const [modalData, handleModalData] = useFormState<AlbumType>({ ...album });
+    const [modalData, handleModalData] = useFormState<AlbumType>({ ...album });
+     const {openModal, closeModal}=useModal()
     const prefetchAlbum = usePrefetch(fetchAlbum);
     const prefetchPhotos=usePrefetch(fetchAlbumPhotos)
     const DeleteAlbum = useMutation({
@@ -24,9 +22,7 @@ export default function AlbumCard({ album }: { album: AlbumType }) {
 
     return (
         <>
-            {/* <Modal open={modal} onClose={() => { setModal(false) }}>
-                <EditAlbumModal formData={modalData} handleChange={handleModalData} onClose={() => setModal(false)} />
-            </Modal> */}
+            
             <div key={album.id} className="album-wrapper" id={album.id.toString()} style={{padding:"16px", backgroundColor:"rgb(146, 146, 146)", borderRadius:'12px'}} onMouseEnter={() => {
                 prefetchAlbum(['albums', album.id.toString()]);
                 prefetchPhotos(['photos', album.id.toString()])
@@ -36,7 +32,7 @@ export default function AlbumCard({ album }: { album: AlbumType }) {
                         <h2>{album.title}</h2>
                     </Link>
                     <span style={{ display: "flex", gap: "8px" }}>
-                        {/* <Button onClick={() => setModal(true)}>Edit</Button> */}
+                        <Button onClick={() => openModal(<EditAlbumModal formData={modalData} handleChange={handleModalData} onClose={() => closeModal()} />)}>Edit</Button>
                         <Button onClick={() => { DeleteAlbum.mutate({ queryKey: ['albums', album.id.toString(), 'delete'] }) }}>Delete</Button>
                     </span>
                 </span>

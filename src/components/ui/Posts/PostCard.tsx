@@ -1,16 +1,14 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
 import { PostType } from "../../../types/Posts";
+import { deletePost, fetchPost, fetchPostComments } from "../../../services/postsFetches";
 import useFormState from "../../../hooks/useFormState";
 import { usePrefetch } from "../../../hooks/usePrefetch";
-import { deletePost, fetchPost, fetchPostComments } from "../../../services/postsFetches";
+import { useModal } from "../../../hooks/useModal";
 import Button from "../../common/Button/Button";
-import Modal from "../../common/Modal/Modal";
 import EditPostModal from "../../common/Modal/EditPostModal";
-import { useMutation } from "@tanstack/react-query";
-
 export default function Post({ post }: { post: PostType }) {
-    const [modal, setModal] = useState(false);
+    const { openModal, closeModal}=useModal()
     const [modalData, handleModalData] = useFormState<PostType>({ ...post });
     const prefetchPost = usePrefetch(fetchPost);
     const prefetchComments = usePrefetch(fetchPostComments);
@@ -24,9 +22,7 @@ export default function Post({ post }: { post: PostType }) {
 
     return (
         <>
-            <Modal open={modal} onClose={() => { setModal(false) }}>
-                <EditPostModal formData={modalData} handleChange={handleModalData} onClose={() => setModal(false)} />
-            </Modal>
+           
             <div key={post.id} className="post-wrapper" id={post.id.toString()} style={{padding:"16px", backgroundColor:"rgb(146, 146, 146)", borderRadius:'12px'}} onMouseEnter={() => {
                 prefetchPost(['posts', post.id.toString()]);
                 prefetchComments(['comments', post.id.toString()]);
@@ -36,7 +32,7 @@ export default function Post({ post }: { post: PostType }) {
                         <h2>{post.title}</h2>
                     </Link>
                     <span style={{ display: "flex", gap: "8px" }}>
-                        <Button onClick={() => setModal(true)}>Edit</Button>
+                        <Button onClick={() => openModal(<EditPostModal formData={modalData} handleChange={handleModalData} onClose={closeModal}/>)}>Edit</Button>
                         <Button onClick={() => { DeletePost.mutate({ queryKey: ['posts', post.id.toString(), 'delete'] }) }}>Delete</Button>
                     </span>
                 </span>

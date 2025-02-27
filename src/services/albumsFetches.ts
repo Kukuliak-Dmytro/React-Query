@@ -27,7 +27,7 @@ export async function fetchAlbum({ queryKey }: { queryKey: QueryKey }): Promise<
     try {
         const response = await fetch(`https://jsonplaceholder.typicode.com/albums/${id}`, requestOptions);
         const result: AlbumType = await response.json();
-        console.log("Fetch successfull: ", result)
+        // console.log("Fetch successfull: ", result)
         return result;
     }
     catch (error) {
@@ -53,15 +53,15 @@ export async function fetchAlbumPhotos({ queryKey }: { queryKey: QueryKey }): Pr
 
 }
 
-export async function editAlbum({post} : {post:AlbumType} ) {
+export async function editAlbum({album} : {album:AlbumType} ) {
     const requestOptions: RequestInit = {
         method: "PUT",
         redirect: "follow",
-        body: JSON.stringify({ title: post.title })
+        body: JSON.stringify({ title: album.title })
 
     };
     try {
-        const response = await fetch(`https://jsonplaceholder.typicode.com/albums/${post.id}/`, requestOptions);
+        const response = await fetch(`https://jsonplaceholder.typicode.com/albums/${album.id}/`, requestOptions);
         const result: AlbumType[] = await response.json();
         // console.log("Edit successfull: ", result)
         return result;
