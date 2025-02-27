@@ -7,6 +7,7 @@ import { usePrefetch } from './hooks/usePrefetch.ts';
 import fetchPosts from './services/postsFetches.ts';
 import fetchAlbums from './services/albumsFetches.ts'
 import { GlobalModal } from './components/common/Modal/Modal.tsx'
+import { LoadingOverlay } from './components/common/OverlaySpinner/OverlaySpinner.tsx'
 function App() {
   const prefetchPosts=usePrefetch(fetchPosts)
   const prefetchAlbums=usePrefetch(fetchAlbums)
@@ -32,6 +33,7 @@ function App() {
       </nav>
      <Outlet></Outlet>
      <GlobalModal></GlobalModal>
+     <LoadingOverlay></LoadingOverlay>
   
     </>
   )
