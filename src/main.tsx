@@ -12,7 +12,17 @@ import PostPage from './pages/PostPage.tsx'
 import AlbumPage from './pages/AlbumPage.tsx';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 const queryClient = new QueryClient();
+import * as Sentry from "@sentry/react";
 
+Sentry.init({
+  dsn: "https://700675c1d473008cbdbff810d7c1a30e@o4510141446815744.ingest.de.sentry.io/4510141457104976",
+  // Setting this option to true will send default PII data to Sentry.
+  // For example, automatic IP address collection on events
+  sendDefaultPii: true
+});
+
+//ideally, routes must be migrated to a separate file, but when I first wrote this,
+//I was not as experienced as I am now, so I left it like this.
 const router = createBrowserRouter([
   {
     path: "/React-Query/",
@@ -31,16 +41,16 @@ const router = createBrowserRouter([
         element: <Posts />,
       },
       {
-        path:"/React-Query/posts/:id",
-        element:<PostPage/>
+        path: "/React-Query/posts/:id",
+        element: <PostPage />
       },
       {
-        path:'/React-Query/albums',
-        element:<Albums/>
+        path: '/React-Query/albums',
+        element: <Albums />
       },
       {
-        path:'/React-Query/albums/:id',
-        element:<AlbumPage/>
+        path: '/React-Query/albums/:id',
+        element: <AlbumPage />
       }
 
     ],
